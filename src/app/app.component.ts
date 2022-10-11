@@ -45,13 +45,7 @@ export class AppComponent implements OnDestroy {
     }
     ngOnInit() {
         this.loadInitialData();
-        function AlertHttpErrorCallbackFn(error: HttpErrorResponse) {
-            alert(error.statusText);
-        };
-        function ConsoleHttpErrorCallbackFn(error: HttpErrorResponse) {
-            console.error('HttpError', error);
-        };
-
+       
     }
     private loadInitialData() {
         this.userState.
