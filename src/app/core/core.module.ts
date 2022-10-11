@@ -11,10 +11,12 @@ import {
     CoreModuleEffects,
     EUI_CONFIG_TOKEN,
 } from '@eui/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { appConfig } from '../../config';
 import { environment } from '../../environments/environment';
 import { REDUCER_TOKEN, getReducers, metaReducers } from './reducers';
+import { HttpErrorHandlerInterceptor, HTTP_ERROR_HANDLER_CONFIG_TOKEN } from '@eui/core';
 
 @NgModule({
     imports: [
@@ -40,7 +42,9 @@ import { REDUCER_TOKEN, getReducers, metaReducers } from './reducers';
         },
         {
             provide: APP_BASE_HREF, useValue: '/'
-        }
+        },
+        { provide: HTTP_INTERCEPTORS, useClass: HttpErrorHandlerInterceptor, multi: true },
+
     ]
 })
 export class CoreModule {
